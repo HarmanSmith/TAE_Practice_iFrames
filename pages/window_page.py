@@ -29,8 +29,9 @@ class WindowPage:
     def switch_to_new_window(self):
         # Loop through until we find a new window handle
         # original_window = self.browser.current_window_handle()
-        # todo here is where the test fails
-        self.browser.switch_to.window(1)
+        # todo here is where the test fails NoSuchWindow Exception
+        # for some reason the index doesnt work either in int or string format
+        self.browser.switch_to.window("1")
         '''for window_handle in self.browser.window_handles:
             if window_handle != original_window:  # todo
                 self.browser.switch_to.window(original_window)
