@@ -12,6 +12,9 @@ class IframesPage:
     def __init__(self, browser):
         self.browser = browser
 
+    def load(self):
+        self.browser.get(self.url)
+
     #locators
     iframe_locator = (By.ID, "thedynamichtml")
     frame1_item1_locator = (By.ID, "iframe0")
@@ -24,7 +27,8 @@ class IframesPage:
 
     def check_iframe_item1(self):
         wait = WebDriverWait(self.browser, 10)
-        return wait.until(EC.visibility_of_element_located(self.frame1_item1_locator))
+        if wait.until(EC.visibility_of_element_located(self.frame1_item1_locator)):
+            return True
 
     # Now click on button
     # driver.find_element(By.TAG_NAME, 'button').click()
