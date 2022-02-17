@@ -17,14 +17,20 @@ class WindowPage:
     button_locator = (By.XPATH, "//*[@id='para1']/button")
 
     def open_new_window(self):
-        wait = WebDriverWait(self.browser, 10)
+        wait = WebDriverWait(self.browser, 30)
         wait.until(EC.visibility_of_element_located(self.button_locator)).click()
+        wait.until(EC.number_of_windows_to_be(2))
 
     def get_window_handle(self):
         # wait = WebDriverWait(self.browser, 10)
         if self.browser.current_window_handle:
             print("Handle is: "+self.browser.current_window_handle+" - .")
             return True
+        else:
+            return False
+
+    def length_window_handle(self):
+        return len(self.browser.window_handles)
 
     def switch_to_new_window(self):
         # Loop through until we find a new window handle
@@ -32,15 +38,13 @@ class WindowPage:
         # todo here is where the test fails NoSuchWindow Exception
         # for some reason the index doesnt work either in int or string format
         self.browser.switch_to.window("1")
-        '''for window_handle in self.browser.window_handles:
-            if window_handle != original_window:  # todo
-                self.browser.switch_to.window(original_window)
-                break'''
 
     def close_window(self):
         self.browser.close()
 
-    def check_windows_opened(self):
+    def check_windows_opened(self, index):
         wait = WebDriverWait(self.browser, 10)
-        # todo
-        return None
+        if len(self.browser.window_handles) == index:
+            return True
+        else:
+            return False

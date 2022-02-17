@@ -9,10 +9,13 @@ def test_window_example(browser):
     # Given the website is displayed
     window_page = WindowPage(browser)
     window_page.load()
-
+    print(window_page.length_window_handle())
+    assert window_page.check_windows_opened(1)
     # When clicking on the new window button
     window_page.open_new_window()
+    assert window_page.check_windows_opened(2)
+    print(window_page.length_window_handle())
     # And switching focus to the new window
     window_page.switch_to_new_window()
     # Then the new window returns it's ID
-    assert window_page.get_window_handle()
+    # assert window_page.get_window_handle()
