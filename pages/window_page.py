@@ -36,15 +36,13 @@ class WindowPage:
 
     def switch_to_new_window(self):
         # Loop through until we find a new window handle
-        # original_window = self.browser.current_window_handle()
         # chrome opens a new tab instead of a new window
-        # todo: window or tab, neither are accessible with this command for some reason
+        # fixed by obtaining the long window handle for each session
         original_window = self.browser.current_window_handle
         for window_handle in self.browser.window_handles:
             if window_handle != original_window:
                 self.browser.switch_to.window(window_handle)
                 break
-        # self.browser.switch_to.window("")
 
     def close_window(self):
         self.browser.close()
