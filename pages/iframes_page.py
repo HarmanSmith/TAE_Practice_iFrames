@@ -15,10 +15,11 @@ class IframesPage:
     def load(self):
         self.browser.get(self.url)
 
-    iframe_locator = "thedynamichtml"  # Iframe locators are always found by ID that's why the locator is a string
+    iframe_locator = "thedynamichtml"  # iFrame locators are always found by ID that's why the locator is a string
     frame1_item1_locator = (By.ID, "iframe0")
 
     def switch_to_iframe(self):
+        """Hard coded for the specified iFrame"""
         self.browser.switch_to.frame(self.iframe_locator)
 
     def check_iframe_item1(self):
