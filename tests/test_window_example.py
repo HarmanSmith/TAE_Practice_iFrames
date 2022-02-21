@@ -16,6 +16,9 @@ def test_window_example(browser):
     assert window_page.check_windows_opened(2)
     print(window_page.length_window_handle())
     # And switching focus to the new window
-    window_page.switch_to_new_window()
+    window_page.open_several_windows(3)
+    third_handle = window_page.get_window_handle(3)
+    window_page.switch_to_specific_window(third_handle)
+    """window_page.switch_to_new_window()"""
     # Then the new window returns it's ID
     # assert window_page.get_window_handle()
