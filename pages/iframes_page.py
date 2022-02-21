@@ -15,18 +15,12 @@ class IframesPage:
     def load(self):
         self.browser.get(self.url)
 
-    #locators
-    iframe_locator = ("thedynamichtml")
+    iframe_locator = "thedynamichtml"  # Iframe locators are always found by ID that's why the locator is a string
     frame1_item1_locator = (By.ID, "iframe0")
 
     def switch_to_iframe(self):
-        # Store iframe web element
-        # switch to selected iframe
         self.browser.switch_to.frame(self.iframe_locator)
 
     def check_iframe_item1(self):
         wait = WebDriverWait(self.browser, 10)
         return wait.until(EC.visibility_of_element_located(self.frame1_item1_locator))
-
-    # Now click on button
-    # driver.find_element(By.TAG_NAME, 'button').click()
