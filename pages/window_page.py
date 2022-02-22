@@ -60,11 +60,5 @@ class WindowPage:
     def switch_to_specific_window(self, handle: str):
         self.browser.switch_to.window(handle)
 
-    # ToDo: Attempt the following
-    '''Con selenium abre ese sitio y haz que se abran unas dos o tres sub-ventanas.
-    Deten la ejecucion con el debugger y ve lo que hay en browser.window_handles.
-    Haz lo mismo con la pagina de frames.
-    Detén la ejecución con un breakpoint y analiza lo que hay en tu sesión webdriver antes  y despues de hacer switch_to.
-    Intenta imprimir el código fuente del portal desde tu objeto browser. imprime todo el html de la pagina.
-    Investiga como ejecutar una instrucción javascript desde tu código de automation. (e.g abrir un alert popup,
-    oprimir un boton, etc).'''
+    def print_dom_to_console(self):
+        print(self.browser.page_source)
